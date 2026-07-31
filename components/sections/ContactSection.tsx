@@ -4,6 +4,7 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Mail, MessageCircle, Send, CheckCircle } from "lucide-react";
 import { contactInfo } from "@/data/social";
+import { web3formsAccessKey } from "@/data/contact";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
@@ -17,28 +18,48 @@ export function ContactSection() {
     setStatus("loading");
     setErrorMessage("");
 
+    if (!web3formsAccessKey) {
+      setStatus("error");
+      setErrorMessage(
+        "Contact form is not configured yet. Please email uroooj056@gmail.com directly or message on WhatsApp."
+      );
+      return;
+    }
+
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: web3formsAccessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Contact from ${formData.name}`,
+          from_name: "Urooj Fatima Portfolio",
+        }),
       });
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (data.success) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
         setStatus("error");
         setErrorMessage(
-          data.error ||
-            "Something went wrong. Please email uroooj056@gmail.com directly."
+          data.message ||
+            "Failed to send message. Please email uroooj056@gmail.com directly."
         );
       }
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Please email uroooj056@gmail.com directly.");
+      setErrorMessage(
+        "Network error. Please email uroooj056@gmail.com or WhatsApp +923181820108."
+      );
     }
   };
 
