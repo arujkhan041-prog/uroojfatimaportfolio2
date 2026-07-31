@@ -3,7 +3,7 @@ export const profile = {
   title: "Full-Stack Web Developer",
   location: "Islamabad, Pakistan",
   email: "uroooj056@gmail.com",
-  experience: "2+ Years",
+  experience: "3+ Years",
   availability: "Freelance / Full-time",
   languages: "English, Urdu",
   photo: "/profile.png",

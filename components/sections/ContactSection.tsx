@@ -91,7 +91,7 @@ export function ContactSection() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full rounded-xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-accent/40 focus:ring-1 focus:ring-accent/20"
+                className="input-field"
                 placeholder="Your name"
               />
             </div>
@@ -106,7 +106,7 @@ export function ContactSection() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full rounded-xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-accent/40 focus:ring-1 focus:ring-accent/20"
+                className="input-field"
                 placeholder="your@email.com"
               />
             </div>
@@ -121,7 +121,7 @@ export function ContactSection() {
                 rows={5}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full resize-none rounded-xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-accent/40 focus:ring-1 focus:ring-accent/20"
+                className="input-field resize-none"
                 placeholder="Tell me about your project..."
               />
             </div>

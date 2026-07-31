@@ -14,9 +14,8 @@ export function Sidebar({ activeId, onNavigate }: SidebarProps) {
   const { text: tagline, isAnimating } = useRotatingText(taglines);
 
   return (
-    <aside className="relative z-20 hidden lg:flex lg:w-[300px] lg:shrink-0 xl:w-[340px] lg:sticky lg:top-0 lg:h-screen lg:flex-col lg:border-r lg:border-white/[0.08] lg:bg-background/95 lg:shadow-[4px_0_24px_rgba(0,0,0,0.4)] lg:backdrop-blur-xl">
+    <aside className="relative z-20 hidden lg:flex lg:h-screen lg:w-[300px] lg:shrink-0 lg:flex-col lg:border-r lg:border-white/[0.06] lg:bg-background/40 lg:backdrop-blur-xl xl:w-[340px]">
       <div className="flex h-full flex-col justify-between overflow-y-auto px-6 py-8 xl:px-8 xl:py-10">
-        {/* Brand */}
         <div>
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -31,6 +30,7 @@ export function Sidebar({ activeId, onNavigate }: SidebarProps) {
             >
               <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-accent font-display text-base font-bold text-white shadow-glow">
                 UF
+                <div className="absolute inset-0 rounded-xl bg-gradient-accent opacity-0 blur-md transition-opacity group-hover:opacity-50" />
               </div>
               <div className="min-w-0 text-left">
                 <p className="truncate font-display text-sm font-semibold text-foreground">
@@ -45,25 +45,24 @@ export function Sidebar({ activeId, onNavigate }: SidebarProps) {
             </button>
           </motion.div>
 
-          {/* Navigation */}
           <nav aria-label="Main navigation">
-            <ul className="space-y-0.5">
+            <ul className="space-y-1">
               {navItems.map((item, index) => {
                 const isActive = activeId === item.id;
                 return (
                   <li key={item.id}>
                     <button
                       onClick={() => onNavigate(item.id)}
-                      className={`relative flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors duration-200 ${
+                      className={`group relative flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-all duration-300 ${
                         isActive
-                          ? "bg-accent/10 text-foreground"
-                          : "text-muted hover:bg-white/[0.03] hover:text-foreground"
+                          ? "text-foreground"
+                          : "text-muted hover:text-foreground"
                       }`}
                     >
                       {isActive && (
                         <motion.div
-                          layoutId="sidebar-indicator"
-                          className="absolute bottom-1.5 left-0 top-1.5 w-[3px] rounded-full bg-gradient-accent"
+                          layoutId="nav-indicator"
+                          className="nav-indicator inset-y-1.5"
                           transition={{
                             type: "spring",
                             stiffness: 350,
@@ -72,11 +71,18 @@ export function Sidebar({ activeId, onNavigate }: SidebarProps) {
                         />
                       )}
                       <span
-                        className={`w-5 shrink-0 font-mono text-[10px] ${isActive ? "text-accent-violet" : "text-muted/50"}`}
+                        className={`w-5 shrink-0 font-mono text-[10px] transition-colors ${isActive ? "text-accent-violet" : "text-muted/50"}`}
                       >
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <span className="truncate">{item.label}</span>
+                      {isActive && (
+                        <motion.span
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="ml-auto h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-accent shadow-[0_0_8px_rgba(99,102,241,0.8)]"
+                        />
+                      )}
                     </button>
                   </li>
                 );
@@ -85,7 +91,6 @@ export function Sidebar({ activeId, onNavigate }: SidebarProps) {
           </nav>
         </div>
 
-        {/* Social links */}
         <div className="mt-8">
           <div className="mb-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           <div className="flex items-center gap-2.5">
@@ -96,7 +101,7 @@ export function Sidebar({ activeId, onNavigate }: SidebarProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.name}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/8 bg-white/5 text-muted transition-all duration-300 hover:border-accent/30 hover:bg-accent/10 hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/8 bg-white/5 text-muted transition-all duration-300 hover:border-accent/30 hover:bg-accent/10 hover:text-foreground hover:shadow-glow"
               >
                 <link.icon size={16} />
               </a>

@@ -61,7 +61,7 @@ export function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className="flex min-w-0 items-start gap-3 rounded-xl border border-white/8 bg-white/[0.03] p-3 sm:p-4"
+                  className="detail-chip flex min-w-0 items-start gap-3"
                 >
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
                     <item.icon size={15} />
@@ -82,7 +82,7 @@ export function AboutSection() {
               {profile.highlights.map((item) => (
                 <div
                   key={item}
-                  className="rounded-xl border border-white/8 bg-white/[0.03] px-2 py-2.5 text-center sm:px-3 sm:py-3"
+                  className="detail-chip text-center"
                 >
                   <p className="text-[10px] font-medium leading-tight text-foreground sm:text-xs">
                     {item}

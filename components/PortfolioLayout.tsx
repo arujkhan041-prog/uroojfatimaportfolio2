@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { BackgroundEffects } from "@/components/layout/BackgroundEffects";
@@ -17,21 +18,33 @@ import { navItems } from "@/data/navigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 export function PortfolioLayout() {
+  const [scrollContainer, setScrollContainer] = useState<HTMLDivElement | null>(
+    null
+  );
   const sectionIds = navItems.map((item) => item.id);
-  const { activeId, scrollToSection } = useScrollSpy(sectionIds);
+  const { activeId, scrollToSection } = useScrollSpy(sectionIds, {
+    scrollRoot: scrollContainer,
+  });
+
+  const scrollRef = useCallback((node: HTMLDivElement | null) => {
+    setScrollContainer(node);
+  }, []);
 
   return (
-    <div className="relative isolate min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background lg:h-screen lg:overflow-hidden">
       <BackgroundEffects />
       <CursorGlow />
 
-      <div className="relative z-10 flex min-h-screen flex-col lg:flex-row">
+      <div className="relative z-10 flex min-h-screen flex-col lg:h-full lg:flex-row lg:overflow-hidden">
         <Sidebar activeId={activeId} onNavigate={scrollToSection} />
 
-        <div className="relative z-10 flex min-w-0 flex-1 flex-col">
+        <div
+          ref={scrollRef}
+          className="flex min-w-0 flex-1 flex-col lg:h-screen lg:overflow-x-hidden lg:overflow-y-auto"
+        >
           <MobileNav activeId={activeId} onNavigate={scrollToSection} />
 
-          <main className="relative z-10 w-full min-w-0 max-w-full overflow-x-hidden">
+          <main className="relative w-full min-w-0 max-w-full">
             <HomeSection />
             <AboutSection />
             <ExperienceSection />

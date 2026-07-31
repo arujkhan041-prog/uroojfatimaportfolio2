@@ -48,7 +48,7 @@ export function ExperienceSection() {
                   {item.highlights.map((highlight) => (
                     <span
                       key={highlight}
-                      className="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted"
+                      className="tag-chip rounded-full px-3 py-1 text-xs"
                     >
                       {highlight}
                     </span>
