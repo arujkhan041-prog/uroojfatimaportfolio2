@@ -25,8 +25,8 @@ export function AboutSection() {
         description="I build for clients worldwide and grow my craft through hands-on Next.js learning projects."
       />
 
-      {/* Mobile: photo first, then bio. Desktop: side-by-side, photo hidden (shown on Home) */}
-      <div className="flex w-full min-w-0 max-w-full flex-col gap-8 md:grid md:grid-cols-2 md:gap-10 lg:gap-12">
+      {/* Mobile/tablet: photo + bio side by side. Desktop: full-width card (photo on Home) */}
+      <div className="flex w-full min-w-0 max-w-full flex-col gap-8 md:grid md:grid-cols-2 md:gap-10 lg:grid-cols-1 lg:gap-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="w-full min-w-0 max-w-full md:col-span-2 lg:col-span-1"
+          className="w-full min-w-0 max-w-full"
         >
           <GlassCard className="p-5 sm:p-8">
             <div className="space-y-4 text-sm leading-relaxed text-muted sm:text-base md:text-lg">
