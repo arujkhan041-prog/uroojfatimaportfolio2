@@ -12,6 +12,8 @@ import {
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+  const isLearning = project.type === "learning";
+
   return (
     <motion.article
       layout
@@ -30,11 +32,22 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        {project.featured && (
-          <span className="absolute left-4 top-4 rounded-full bg-gradient-accent px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
-            Featured
+        <div className="absolute left-4 top-4 flex flex-wrap gap-2">
+          {project.featured && (
+            <span className="rounded-full bg-gradient-accent px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+              Featured
+            </span>
+          )}
+          <span
+            className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider ${
+              isLearning
+                ? "border border-violet-500/30 bg-violet-500/20 text-violet-300"
+                : "border border-emerald-500/30 bg-emerald-500/20 text-emerald-300"
+            }`}
+          >
+            {isLearning ? "Learning" : "Client"}
           </span>
-        )}
+        </div>
       </div>
 
       <div className="p-6">
@@ -56,7 +69,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
           ))}
         </div>
 
-        <div className="mt-5 flex gap-3">
+        <div className="mt-5 flex flex-wrap gap-3">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
@@ -85,20 +98,24 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
   );
 }
 
+function filterProjects(category: ProjectCategory) {
+  if (category === "all") return projects;
+  if (category === "client") return projects.filter((p) => p.type === "client");
+  if (category === "learning") return projects.filter((p) => p.type === "learning");
+  return projects.filter((p) => p.category === category);
+}
+
 export function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
 
-  const filtered =
-    activeCategory === "all"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+  const filtered = filterProjects(activeCategory);
 
   return (
     <section id="projects" className="section-padding relative overflow-hidden">
       <SectionHeading
         label="Projects"
-        title="Selected Work"
-        description="A showcase of projects across WordPress, Next.js, eCommerce, and custom portals."
+        title="Client Work & Learning Builds"
+        description="Real websites delivered for businesses worldwide, plus Next.js apps I build to learn, experiment, and grow as a developer."
       />
 
       {/* Filter tabs */}
@@ -107,7 +124,7 @@ export function ProjectsSection() {
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`relative rounded-full px-5 py-2.5 text-xs font-medium transition-all duration-300 ${
+            className={`relative rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 sm:px-5 sm:py-2.5 ${
               activeCategory === cat.id
                 ? "text-white"
                 : "border border-white/8 bg-white/[0.03] text-muted hover:text-foreground"

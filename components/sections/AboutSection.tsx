@@ -22,7 +22,7 @@ export function AboutSection() {
       <SectionHeading
         label="About Me"
         title="Crafting Digital Experiences That Convert"
-        description="I help businesses worldwide establish a powerful online presence through thoughtfully built websites."
+        description="I build for clients worldwide and grow my craft through hands-on Next.js learning projects."
       />
 
       <div className="grid min-w-0 gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
@@ -78,16 +78,14 @@ export function AboutSection() {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {["Fast", "Responsive", "SEO-Ready", "Easy to Manage"].map(
-                (item, i) => (
-                  <div
-                    key={item}
-                    className="rounded-xl border border-white/8 bg-white/[0.03] px-2 py-2.5 text-center sm:px-3 sm:py-3"
-                  >
-                    <p className="text-xs font-medium text-foreground">{item}</p>
-                  </div>
-                )
-              )}
+              {profile.highlights.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-white/8 bg-white/[0.03] px-2 py-2.5 text-center sm:px-3 sm:py-3"
+                >
+                  <p className="text-xs font-medium text-foreground">{item}</p>
+                </div>
+              ))}
             </div>
           </GlassCard>
         </motion.div>

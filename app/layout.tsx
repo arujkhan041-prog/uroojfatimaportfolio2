@@ -17,7 +17,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Urooj Fatima | Full-Stack Web Developer",
   description:
-    "Full-Stack Web Developer from Pakistan — Building fast, modern, SEO-friendly websites for startups & businesses across the USA, UK, Canada, Australia & UAE.",
+    "Full-Stack Web Developer from Pakistan — client websites for businesses worldwide and Next.js apps built for continuous learning.",
   keywords: [
     "Full-Stack Developer",
     "Web Developer",
@@ -32,17 +32,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://uroojportfolio.vercel.app",
+    url: "https://uroojfatimaportfolio.vercel.app",
     title: "Urooj Fatima | Full-Stack Web Developer",
     description:
-      "Building fast, modern, SEO-friendly websites for startups & businesses worldwide.",
+      "Client websites and Next.js learning projects — building modern web experiences while always growing as a developer.",
     siteName: "Urooj Fatima Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Urooj Fatima | Full-Stack Web Developer",
     description:
-      "Building fast, modern, SEO-friendly websites for startups & businesses worldwide.",
+      "Client websites and Next.js learning projects — building modern web experiences while always growing as a developer.",
   },
   robots: {
     index: true,

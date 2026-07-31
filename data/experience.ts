@@ -7,6 +7,13 @@ export interface ExperienceItem {
 
 export const experienceItems: ExperienceItem[] = [
   {
+    id: "nextjs-learning",
+    title: "Next.js Learning & Side Projects",
+    description:
+      "I regularly build Next.js applications for my own learning — exploring App Router, server components, API routes, TypeScript, and Vercel deployments. These projects keep my skills sharp and help me bring modern patterns to client work.",
+    highlights: ["App Router", "TypeScript", "Personal builds"],
+  },
+  {
     id: "modern-websites",
     title: "Modern Business Websites",
     description:

@@ -8,7 +8,13 @@ export const profile = {
   languages: "English, Urdu",
   photo: "/profile.png",
   bio: [
-    "I'm a Full-Stack Web Developer with a strong focus on building fast, secure, and scalable websites. I have experience in theme customization, plugin integration, API setup, and performance optimization.",
-    "With clients across the USA, UK, Canada, Australia, and the UAE, I enjoy turning ideas into real websites that help businesses grow online — from WordPress business sites to Next.js apps and custom portals.",
+    "I'm a Full-Stack Web Developer who builds real websites for clients and constantly sharpens my skills by creating Next.js apps for my own learning. That hands-on practice — App Router, TypeScript, API routes, deployments — makes me a stronger developer on every client project.",
+    "For clients across the USA, UK, Canada, Australia, and the UAE, I deliver fast, secure WordPress and Next.js sites. For myself, I build side projects to explore new patterns, tools, and modern web architecture — because the best developers never stop learning.",
+  ],
+  highlights: [
+    "Client Projects",
+    "Next.js Learning Apps",
+    "WordPress Expert",
+    "Always Growing",
   ],
 };

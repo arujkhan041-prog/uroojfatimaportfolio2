@@ -61,9 +61,8 @@ export function HomeSection() {
             transition={{ duration: 0.6, delay: 1.2 }}
             className="mt-5 max-w-xl text-sm leading-relaxed text-muted sm:text-base md:text-lg"
           >
-            Full-Stack Web Developer from Pakistan — Building fast, modern,
-            SEO-friendly websites for startups & businesses across the{" "}
-            <span className="text-foreground/80">USA, UK, Canada, Australia & UAE</span>.
+            Full-Stack Web Developer from Pakistan — delivering client websites worldwide and building{" "}
+            <span className="text-foreground/80">Next.js apps to keep learning and growing</span> as a developer.
           </motion.p>
 
           <motion.div
@@ -85,7 +84,7 @@ export function HomeSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.8 }}
-            className="mt-12 grid grid-cols-3 gap-3 border-t border-white/8 pt-6 sm:gap-6 sm:pt-8"
+            className="mt-12 grid grid-cols-3 gap-3 border-t border-white/8 pt-6 sm:gap-4 sm:pt-8"
           >
             {stats.map((stat, index) => (
               <div key={stat.label} className="min-w-0">

@@ -16,5 +16,5 @@ export const navItems: NavItem[] = [
 export const taglines = [
   "Full-Stack Developer",
   "WordPress & Next.js Expert",
-  "Building Fast, Modern Web Experiences",
+  "Always Learning, Always Building",
 ];
