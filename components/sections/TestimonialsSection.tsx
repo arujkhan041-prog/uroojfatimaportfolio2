@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="section-padding relative">
+    <section id="testimonials" className="section-padding relative overflow-hidden">
       <SectionHeading
         label="Testimonials"
         title="What Clients Say"

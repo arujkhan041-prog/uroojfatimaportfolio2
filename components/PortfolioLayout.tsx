@@ -25,13 +25,15 @@ export function PortfolioLayout() {
       <BackgroundEffects />
       <CursorGlow />
 
-      <div className="relative z-10 flex min-h-screen">
+      <div className="relative z-10 flex min-h-screen flex-col lg:flex-row">
+        {/* Sidebar — sticky column on desktop */}
         <Sidebar activeId={activeId} onNavigate={scrollToSection} />
 
-        <div className="flex w-full flex-col lg:ml-[32%] lg:w-[68%]">
+        {/* Scrollable content */}
+        <div className="flex min-w-0 flex-1 flex-col">
           <MobileNav activeId={activeId} onNavigate={scrollToSection} />
 
-          <main>
+          <main className="min-w-0 overflow-x-hidden">
             <HomeSection />
             <AboutSection />
             <ExperienceSection />

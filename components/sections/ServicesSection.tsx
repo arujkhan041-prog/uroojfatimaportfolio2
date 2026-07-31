@@ -75,7 +75,7 @@ function TiltCard({
 
 export function ServicesSection() {
   return (
-    <section id="services" className="section-padding relative">
+    <section id="services" className="section-padding relative overflow-hidden">
       <SectionHeading
         label="Services"
         title="How I Can Help You"

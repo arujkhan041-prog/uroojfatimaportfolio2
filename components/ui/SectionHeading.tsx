@@ -21,16 +21,16 @@ export function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`mb-12 md:mb-16 ${align === "center" ? "text-center" : ""}`}
+      className={`mb-8 min-w-0 sm:mb-10 md:mb-12 ${align === "center" ? "text-center" : ""}`}
     >
-      <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-violet">
+      <span className="mb-2 inline-block text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-violet sm:text-xs">
         {label}
       </span>
-      <h2 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+      <h2 className="break-words font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+        <p className="mt-3 max-w-2xl break-words text-sm leading-relaxed text-muted sm:mt-4 sm:text-base">
           {description}
         </p>
       )}

@@ -43,7 +43,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section-padding relative">
+    <section id="contact" className="section-padding relative overflow-hidden">
       <SectionHeading
         label="Contact"
         title="Let's Build Something Great Together"

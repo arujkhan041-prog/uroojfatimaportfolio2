@@ -94,7 +94,7 @@ export function ProjectsSection() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="section-padding relative">
+    <section id="projects" className="section-padding relative overflow-hidden">
       <SectionHeading
         label="Projects"
         title="Selected Work"

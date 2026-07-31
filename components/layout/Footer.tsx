@@ -3,7 +3,7 @@ import { navItems } from "@/data/navigation";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/8 bg-surface/40 px-6 py-10 md:px-10 lg:px-16">
+    <footer className="border-t border-white/8 bg-surface/40 px-4 py-8 sm:px-6 md:px-8 lg:px-10">
       <div className="mx-auto max-w-4xl">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="text-center md:text-left">

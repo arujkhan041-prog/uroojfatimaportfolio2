@@ -26,7 +26,7 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="section-padding relative">
+    <section id="skills" className="section-padding relative overflow-hidden">
       <SectionHeading
         label="Skills"
         title="Tools & Technologies"

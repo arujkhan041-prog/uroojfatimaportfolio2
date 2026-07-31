@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="section-padding relative">
+    <section id="experience" className="section-padding relative overflow-hidden">
       <SectionHeading
         label="Experience"
         title="What I've Built"
@@ -15,7 +15,7 @@ export function ExperienceSection() {
 
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-[19px] top-0 hidden h-full w-px bg-gradient-to-b from-accent/40 via-accent/20 to-transparent md:left-[23px] lg:block" />
+        <div className="absolute left-[11px] top-0 hidden h-full w-px bg-gradient-to-b from-accent/40 via-accent/20 to-transparent md:block md:left-[15px] lg:left-[11px]" />
 
         <div className="space-y-6">
           {experienceItems.map((item, index) => (
@@ -28,7 +28,7 @@ export function ExperienceSection() {
               className="relative flex gap-6 md:gap-8"
             >
               {/* Timeline dot */}
-              <div className="relative z-10 hidden shrink-0 lg:block">
+              <div className="relative z-10 hidden shrink-0 md:block">
                 <motion.div
                   whileInView={{ scale: [0, 1.2, 1] }}
                   viewport={{ once: true }}
@@ -37,8 +37,8 @@ export function ExperienceSection() {
                 />
               </div>
 
-              <div className="glass-card flex-1 p-6 md:p-8">
-                <h3 className="font-display text-lg font-semibold text-foreground md:text-xl">
+              <div className="glass-card min-w-0 flex-1 p-5 sm:p-6 md:p-8">
+                <h3 className="break-words font-display text-base font-semibold text-foreground sm:text-lg md:text-xl">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">

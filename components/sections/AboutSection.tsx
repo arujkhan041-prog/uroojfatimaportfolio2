@@ -18,74 +18,74 @@ const details = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="section-padding relative">
+    <section id="about" className="section-padding relative overflow-hidden">
       <SectionHeading
         label="About Me"
         title="Crafting Digital Experiences That Convert"
         description="I help businesses worldwide establish a powerful online presence through thoughtfully built websites."
       />
 
-      <div className="grid gap-10 lg:grid-cols-5 lg:gap-14 lg:items-start">
+      <div className="grid min-w-0 gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
         {/* Profile photo */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="flex justify-center lg:col-span-2 lg:justify-start"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="min-w-0"
         >
-          <ProfilePhoto variant="about" />
+          <ProfilePhoto />
         </motion.div>
 
         {/* Bio & details */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="lg:col-span-3"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="min-w-0"
         >
-          <GlassCard className="p-8 md:p-10">
-            <div className="space-y-5 text-base leading-relaxed text-muted md:text-lg">
+          <GlassCard className="p-6 sm:p-8">
+            <div className="space-y-4 text-sm leading-relaxed text-muted sm:text-base md:text-lg">
               {profile.bio.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                <p key={paragraph.slice(0, 40)} className="break-words">
+                  {paragraph}
+                </p>
               ))}
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {details.map((item, i) => (
                 <motion.div
                   key={item.label}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.06 }}
-                  className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/[0.03] p-4"
+                  transition={{ delay: i * 0.05 }}
+                  className="flex min-w-0 items-start gap-3 rounded-xl border border-white/8 bg-white/[0.03] p-3 sm:p-4"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                    <item.icon size={16} />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                    <item.icon size={15} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-muted">{item.label}</p>
-                    <p className="text-sm font-medium text-foreground">{item.value}</p>
+                    <p className={`text-sm font-medium text-foreground ${item.label === "Email" ? "break-all" : "break-words"}`}>
+                      {item.value}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4">
               {["Fast", "Responsive", "SEO-Ready", "Easy to Manage"].map(
                 (item, i) => (
-                  <motion.div
+                  <div
                     key={item}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.08 }}
-                    className="rounded-xl border border-white/8 bg-white/[0.03] px-3 py-3 text-center"
+                    className="rounded-xl border border-white/8 bg-white/[0.03] px-2 py-2.5 text-center sm:px-3 sm:py-3"
                   >
-                    <p className="text-xs font-medium text-foreground sm:text-sm">{item}</p>
-                  </motion.div>
+                    <p className="text-xs font-medium text-foreground">{item}</p>
+                  </div>
                 )
               )}
             </div>
