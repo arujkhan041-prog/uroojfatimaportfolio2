@@ -20,7 +20,7 @@ export function MobileNav({ activeId, onNavigate }: MobileNavProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/8 bg-background/90 backdrop-blur-xl lg:hidden">
+    <header className="sticky top-0 z-[100] border-b border-white/8 bg-background/95 shadow-lg backdrop-blur-xl lg:hidden">
       <div className="flex items-center justify-between gap-3 px-4 py-3">
         <button
           onClick={() => handleNavigate("home")}
@@ -53,7 +53,7 @@ export function MobileNav({ activeId, onNavigate }: MobileNavProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/50"
+              className="fixed inset-0 z-[90] bg-black/50"
               onClick={() => setIsOpen(false)}
               aria-hidden
             />
@@ -62,7 +62,7 @@ export function MobileNav({ activeId, onNavigate }: MobileNavProps) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed bottom-0 right-0 top-0 z-50 w-[min(100%,280px)] border-l border-white/8 bg-background/98 p-5 pt-[4.5rem] backdrop-blur-xl"
+              className="fixed bottom-0 right-0 top-0 z-[100] w-[min(100%,280px)] border-l border-white/8 bg-background shadow-2xl p-5 pt-[4.5rem]"
               aria-label="Mobile navigation"
             >
               <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-muted">

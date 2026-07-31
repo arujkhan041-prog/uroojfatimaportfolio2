@@ -14,7 +14,7 @@ export function Sidebar({ activeId, onNavigate }: SidebarProps) {
   const { text: tagline, isAnimating } = useRotatingText(taglines);
 
   return (
-    <aside className="hidden lg:flex lg:w-[300px] lg:shrink-0 xl:w-[340px] lg:sticky lg:top-0 lg:h-screen lg:flex-col lg:border-r lg:border-white/[0.06] lg:bg-background/50 lg:backdrop-blur-sm">
+    <aside className="relative z-20 hidden lg:flex lg:w-[300px] lg:shrink-0 xl:w-[340px] lg:sticky lg:top-0 lg:h-screen lg:flex-col lg:border-r lg:border-white/[0.08] lg:bg-background/95 lg:shadow-[4px_0_24px_rgba(0,0,0,0.4)] lg:backdrop-blur-xl">
       <div className="flex h-full flex-col justify-between overflow-y-auto px-6 py-8 xl:px-8 xl:py-10">
         {/* Brand */}
         <div>

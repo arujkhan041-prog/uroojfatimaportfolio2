@@ -119,7 +119,7 @@ export function ProjectsSection() {
       />
 
       {/* Filter tabs */}
-      <div className="mb-10 flex flex-wrap gap-2">
+      <div className="relative z-10 mb-10 flex flex-wrap gap-2">
         {projectCategories.map((cat) => (
           <button
             key={cat.id}

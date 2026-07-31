@@ -67,7 +67,7 @@ function CoreOrb() {
             color="#6366F1"
             wireframe
             transparent
-            opacity={0.45}
+            opacity={0.3}
           />
         </mesh>
         <mesh ref={innerRef} scale={0.55}>
@@ -76,7 +76,7 @@ function CoreOrb() {
             color="#3B82F6"
             wireframe
             transparent
-            opacity={0.25}
+            opacity={0.18}
           />
         </mesh>
       </Float>
@@ -85,7 +85,7 @@ function CoreOrb() {
 }
 
 function ParticleField() {
-  const count = 120;
+  const count = 80;
   const ref = useRef<THREE.Points>(null);
 
   const positions = useMemo(() => {
@@ -115,10 +115,10 @@ function ParticleField() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.035}
+        size={0.03}
         color="#6366F1"
         transparent
-        opacity={0.55}
+        opacity={0.4}
         sizeAttenuation
         depthWrite={false}
       />
@@ -131,8 +131,8 @@ function SceneContent() {
 
   useFrame((state) => {
     if (!groupRef.current) return;
-    const targetY = state.pointer.x * 0.12;
-    const targetX = state.pointer.y * 0.06;
+    const targetY = state.pointer.x * 0.08;
+    const targetX = state.pointer.y * 0.04;
     groupRef.current.rotation.y = THREE.MathUtils.lerp(
       groupRef.current.rotation.y,
       targetY,
@@ -147,18 +147,17 @@ function SceneContent() {
 
   return (
     <group ref={groupRef}>
-      <ambientLight intensity={0.25} />
-      <pointLight position={[8, 6, 4]} intensity={1.2} color="#6366F1" />
-      <pointLight position={[-6, -2, 2]} intensity={0.6} color="#8B5CF6" />
+      <ambientLight intensity={0.2} />
+      <pointLight position={[8, 6, 4]} intensity={0.8} color="#6366F1" />
 
       <Stars
-        radius={80}
+        radius={60}
         depth={40}
-        count={800}
-        factor={3}
+        count={500}
+        factor={2.5}
         saturation={0}
         fade
-        speed={0.4}
+        speed={0.3}
       />
 
       <Grid
@@ -169,10 +168,9 @@ function SceneContent() {
         sectionSize={3.3}
         cellColor="#6366F1"
         sectionColor="#3B82F6"
-        cellThickness={0.4}
-        sectionThickness={0.8}
+        cellThickness={0.35}
+        sectionThickness={0.7}
         position={[0, -2.5, 0]}
-        args={[10, 10]}
       />
 
       <CoreOrb />
@@ -182,7 +180,7 @@ function SceneContent() {
         position={[3.2, -0.3, -4]}
         rotationSpeed={[0.1, 0.18, 0.05]}
         scale={0.9}
-        opacity={0.35}
+        opacity={0.25}
       />
 
       <FloatingWireframe
@@ -190,15 +188,7 @@ function SceneContent() {
         position={[0.5, 2.2, -6]}
         rotationSpeed={[0.06, 0.14, 0.08]}
         scale={0.75}
-        opacity={0.3}
-      />
-
-      <FloatingWireframe
-        geometry={<torusGeometry args={[1.1, 0.04, 24, 64]} />}
-        position={[-3.5, -1, -5]}
-        rotationSpeed={[0.12, 0.05, 0.1]}
-        scale={1}
-        opacity={0.25}
+        opacity={0.2}
       />
 
       <ParticleField />
@@ -209,19 +199,15 @@ function SceneContent() {
 export function Scene3DCanvas() {
   return (
     <Canvas
+      className="!absolute !inset-0 !h-full !w-full"
       camera={{ position: [0, 1.5, 7.5], fov: 50 }}
-      dpr={[1, 1.5]}
+      dpr={[1, 1.25]}
       gl={{
         antialias: true,
         alpha: true,
         powerPreference: "high-performance",
       }}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 0,
-        pointerEvents: "none",
-      }}
+      style={{ pointerEvents: "none" }}
     >
       <fog attach="fog" args={["#0A0A0F", 6, 22]} />
       <SceneContent />

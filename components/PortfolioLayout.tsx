@@ -21,19 +21,17 @@ export function PortfolioLayout() {
   const { activeId, scrollToSection } = useScrollSpy(sectionIds);
 
   return (
-    <>
+    <div className="relative isolate min-h-screen bg-background">
       <BackgroundEffects />
       <CursorGlow />
 
       <div className="relative z-10 flex min-h-screen flex-col lg:flex-row">
-        {/* Sidebar — sticky column on desktop */}
         <Sidebar activeId={activeId} onNavigate={scrollToSection} />
 
-        {/* Scrollable content */}
-        <div className="flex min-w-0 flex-1 flex-col">
+        <div className="relative z-10 flex min-w-0 flex-1 flex-col">
           <MobileNav activeId={activeId} onNavigate={scrollToSection} />
 
-          <main className="w-full min-w-0 max-w-full overflow-x-hidden">
+          <main className="relative z-10 w-full min-w-0 max-w-full overflow-x-hidden">
             <HomeSection />
             <AboutSection />
             <ExperienceSection />
@@ -47,6 +45,6 @@ export function PortfolioLayout() {
           <Footer />
         </div>
       </div>
-    </>
+    </div>
   );
 }

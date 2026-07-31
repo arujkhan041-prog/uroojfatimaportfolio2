@@ -31,7 +31,7 @@ export function CursorGlow() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed z-[9999] hidden lg:block"
+      className="pointer-events-none fixed -z-[5] hidden lg:block"
       animate={{ x: position.x - 200, y: position.y - 200 }}
       transition={{ type: "spring", stiffness: 150, damping: 20, mass: 0.5 }}
     >
