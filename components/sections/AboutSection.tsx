@@ -18,34 +18,33 @@ const details = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="section-padding relative overflow-hidden">
+    <section id="about" className="section-padding relative w-full max-w-full overflow-hidden">
       <SectionHeading
         label="About Me"
         title="Crafting Digital Experiences That Convert"
         description="I build for clients worldwide and grow my craft through hands-on Next.js learning projects."
       />
 
-      <div className="grid min-w-0 gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
-        {/* Profile photo */}
+      {/* Mobile: photo first, then bio. Desktop: side-by-side, photo hidden (shown on Home) */}
+      <div className="flex w-full min-w-0 max-w-full flex-col gap-8 md:grid md:grid-cols-2 md:gap-10 lg:gap-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="min-w-0"
+          className="w-full min-w-0 lg:hidden"
         >
-          <ProfilePhoto />
+          <ProfilePhoto className="max-w-[220px] sm:max-w-[260px]" />
         </motion.div>
 
-        {/* Bio & details */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="min-w-0"
+          className="w-full min-w-0 max-w-full md:col-span-2 lg:col-span-1"
         >
-          <GlassCard className="p-6 sm:p-8">
+          <GlassCard className="p-5 sm:p-8">
             <div className="space-y-4 text-sm leading-relaxed text-muted sm:text-base md:text-lg">
               {profile.bio.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)} className="break-words">
@@ -54,7 +53,7 @@ export function AboutSection() {
               ))}
             </div>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {details.map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -67,9 +66,11 @@ export function AboutSection() {
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
                     <item.icon size={15} />
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="text-xs text-muted">{item.label}</p>
-                    <p className={`text-sm font-medium text-foreground ${item.label === "Email" ? "break-all" : "break-words"}`}>
+                    <p
+                      className={`text-sm font-medium text-foreground ${item.label === "Email" ? "break-all" : "break-words"}`}
+                    >
                       {item.value}
                     </p>
                   </div>
@@ -83,7 +84,9 @@ export function AboutSection() {
                   key={item}
                   className="rounded-xl border border-white/8 bg-white/[0.03] px-2 py-2.5 text-center sm:px-3 sm:py-3"
                 >
-                  <p className="text-xs font-medium text-foreground">{item}</p>
+                  <p className="text-[10px] font-medium leading-tight text-foreground sm:text-xs">
+                    {item}
+                  </p>
                 </div>
               ))}
             </div>

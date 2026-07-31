@@ -33,7 +33,7 @@ export function PortfolioLayout() {
         <div className="flex min-w-0 flex-1 flex-col">
           <MobileNav activeId={activeId} onNavigate={scrollToSection} />
 
-          <main className="min-w-0 overflow-x-hidden">
+          <main className="w-full min-w-0 max-w-full overflow-x-hidden">
             <HomeSection />
             <AboutSection />
             <ExperienceSection />

@@ -32,18 +32,18 @@ export function HomeSection() {
   return (
     <section
       id="home"
-      className="section-padding relative flex min-h-[calc(100vh-4rem)] flex-col justify-center overflow-hidden lg:min-h-screen"
+      className="section-padding relative overflow-hidden lg:flex lg:min-h-screen lg:flex-col lg:justify-center"
     >
-      <div className="grid min-w-0 items-center gap-10 lg:grid-cols-2 lg:gap-12">
+      <div className="grid min-w-0 max-w-full items-center gap-10 lg:grid-cols-2 lg:gap-12">
         {/* Text content */}
-        <div className="relative z-10 min-w-0">
+        <div className="relative z-10 w-full min-w-0 max-w-full">
           <StatusBadge />
 
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 font-display text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl"
+            className="mt-5 font-display text-[1.65rem] font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-6xl"
           >
             <span className="break-words">{displayedText}</span>
             {showCursor && (
@@ -59,7 +59,7 @@ export function HomeSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            className="mt-5 max-w-xl text-sm leading-relaxed text-muted sm:text-base md:text-lg"
+            className="mt-4 max-w-full text-sm leading-relaxed text-muted sm:mt-5 sm:max-w-xl sm:text-base md:text-lg"
           >
             Full-Stack Web Developer from Pakistan — delivering client websites worldwide and building{" "}
             <span className="text-foreground/80">Next.js apps to keep learning and growing</span> as a developer.
@@ -69,13 +69,13 @@ export function HomeSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.5 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap"
           >
-            <MagneticButton href="#projects" variant="primary">
+            <MagneticButton href="#projects" variant="primary" className="w-full sm:w-auto">
               View Projects
               <ArrowRight size={18} />
             </MagneticButton>
-            <MagneticButton href="#contact" variant="secondary">
+            <MagneticButton href="#contact" variant="secondary" className="w-full sm:w-auto">
               Let&apos;s Talk
             </MagneticButton>
           </motion.div>
@@ -84,41 +84,43 @@ export function HomeSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.8 }}
-            className="mt-12 grid grid-cols-3 gap-3 border-t border-white/8 pt-6 sm:gap-4 sm:pt-8"
+            className="mt-8 grid grid-cols-3 gap-2 border-t border-white/8 pt-6 sm:mt-10 sm:gap-4 sm:pt-8"
           >
             {stats.map((stat, index) => (
-              <div key={stat.label} className="min-w-0">
+              <div key={stat.label} className="min-w-0 text-center sm:text-left">
                 <motion.p
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 2 + index * 0.15, duration: 0.5 }}
-                  className="font-display text-xl font-bold gradient-text sm:text-2xl md:text-3xl"
+                  className="font-display text-lg font-bold gradient-text sm:text-2xl md:text-3xl"
                 >
                   {stat.value}
                 </motion.p>
-                <p className="mt-1 text-[10px] text-muted sm:text-xs md:text-sm">{stat.label}</p>
+                <p className="mt-0.5 text-[9px] leading-tight text-muted sm:text-xs md:text-sm">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Profile photo — visible on all screens */}
+        {/* Profile photo — desktop only (mobile photo lives in About) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.8 }}
-          className="relative z-10 flex justify-center lg:justify-end"
+          className="relative z-10 hidden justify-end lg:flex"
         >
-          <ProfilePhoto className="max-w-[240px] sm:max-w-[280px] lg:max-w-[300px]" />
+          <ProfilePhoto className="max-w-[300px]" />
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — desktop only */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:bottom-8"
+        className="absolute bottom-8 left-16 hidden lg:block"
       >
         <motion.div
           animate={{ y: [0, 6, 0] }}
