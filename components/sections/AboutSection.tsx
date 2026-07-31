@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Briefcase, Clock, Languages } from "lucide-react";
 import { profile } from "@/data/profile";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { ProfilePhoto } from "@/components/ui/ProfilePhoto";
 
 const details = [
   { icon: Briefcase, label: "Name", value: profile.name },
@@ -25,38 +25,16 @@ export function AboutSection() {
         description="I help businesses worldwide establish a powerful online presence through thoughtfully built websites."
       />
 
-      <div className="grid gap-8 lg:grid-cols-5 lg:gap-12">
+      <div className="grid gap-10 lg:grid-cols-5 lg:gap-14 lg:items-start">
         {/* Profile photo */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="lg:col-span-2"
+          className="flex justify-center lg:col-span-2 lg:justify-start"
         >
-          <div className="relative mx-auto max-w-sm lg:mx-0">
-            <div className="absolute -inset-3 rounded-3xl bg-gradient-accent opacity-20 blur-2xl" />
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-glow-lg">
-              <Image
-                src={profile.photo}
-                alt={`${profile.name} — Full-Stack Web Developer`}
-                width={480}
-                height={480}
-                className="aspect-square w-full object-cover object-top"
-                priority
-              />
-            </div>
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              className="absolute -right-4 -top-4 h-20 w-20 rounded-full border border-dashed border-accent/30"
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-3 -left-3 h-14 w-14 rounded-full border border-accent/20"
-            />
-          </div>
+          <ProfilePhoto variant="about" />
         </motion.div>
 
         {/* Bio & details */}
