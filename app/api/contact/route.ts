@@ -12,8 +12,34 @@ export async function POST(request: Request) {
       );
     }
 
-    // Formspree integration — replace YOUR_FORM_ID with your actual Formspree form ID
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
     const formspreeEndpoint = process.env.FORMSPREE_ENDPOINT;
+
+    if (accessKey) {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name,
+          email,
+          message,
+          subject: `Portfolio Contact from ${name}`,
+          from_name: "Urooj Fatima Portfolio",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        return NextResponse.json(
+          { error: result.message || "Failed to send message" },
+          { status: 500 }
+        );
+      }
+
+      return NextResponse.json({ success: true });
+    }
 
     if (formspreeEndpoint) {
       const response = await fetch(formspreeEndpoint, {
@@ -28,12 +54,17 @@ export async function POST(request: Request) {
           { status: 500 }
         );
       }
+
+      return NextResponse.json({ success: true });
     }
 
-    // Log for development when Formspree is not configured
-    console.log("Contact form submission:", { name, email, message });
-
-    return NextResponse.json({ success: true });
+    return NextResponse.json(
+      {
+        error:
+          "Email service is not configured. Please email uroooj056@gmail.com directly or contact the site owner.",
+      },
+      { status: 503 }
+    );
   } catch {
     return NextResponse.json(
       { error: "Internal server error" },

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="#12121A"/>
+  <rect width="800" height="500" fill="url(#g)" opacity="0.15"/>
+  <text x="400" y="230" text-anchor="middle" fill="#F4F4F8" font-family="system-ui,sans-serif" font-size="28" font-weight="600">The Safety Certs</text>
+  <text x="400" y="270" text-anchor="middle" fill="#8B8B9E" font-family="system-ui,sans-serif" font-size="14">thesafetycerts.co.uk</text>
+</svg>

@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { stats } from "@/data/stats";
+import { profile } from "@/data/profile";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 
@@ -115,18 +117,28 @@ export function HomeSection() {
         </motion.div>
       </motion.div>
 
-      {/* Abstract avatar illustration */}
-      <div className="pointer-events-none absolute -right-20 top-1/2 hidden -translate-y-1/2 xl:block">
+      {/* Profile photo — desktop */}
+      <div className="pointer-events-none absolute -right-8 top-1/2 hidden -translate-y-1/2 xl:block">
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          className="relative h-72 w-72"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+          className="relative h-80 w-80"
         >
-          <div className="absolute inset-0 rounded-full border border-white/5" />
-          <div className="absolute inset-4 rounded-full border border-dashed border-accent/20" />
-          <div className="absolute inset-8 rounded-full bg-gradient-accent opacity-10 blur-2xl" />
-          <div className="absolute inset-12 flex items-center justify-center rounded-full border border-white/10 bg-surface/50 backdrop-blur-sm">
-            <span className="font-display text-5xl font-bold gradient-text">UF</span>
+          <div className="absolute -inset-4 rounded-full bg-gradient-accent opacity-15 blur-3xl" />
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 rounded-full border border-white/5"
+          />
+          <div className="absolute inset-4 overflow-hidden rounded-full border-2 border-white/10 shadow-glow-lg">
+            <Image
+              src={profile.photo}
+              alt={profile.name}
+              width={320}
+              height={320}
+              className="h-full w-full object-cover object-top"
+            />
           </div>
         </motion.div>
       </div>

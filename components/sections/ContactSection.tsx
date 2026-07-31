@@ -9,11 +9,13 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     try {
       const response = await fetch("/api/contact", {
@@ -22,14 +24,21 @@ export function ContactSection() {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
         setStatus("error");
+        setErrorMessage(
+          data.error ||
+            "Something went wrong. Please email uroooj056@gmail.com directly."
+        );
       }
     } catch {
       setStatus("error");
+      setErrorMessage("Network error. Please email uroooj056@gmail.com directly.");
     }
   };
 
@@ -119,7 +128,7 @@ export function ContactSection() {
 
             {status === "error" && (
               <p className="text-sm text-red-400">
-                Something went wrong. Please try again or email directly.
+                {errorMessage || "Something went wrong. Please try again or email directly."}
               </p>
             )}
           </form>
